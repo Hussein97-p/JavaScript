@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum, Product, Average</title>
+    <style>
+        body {
+            background-color: silver;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid black;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <script>
+            let num1 = parseInt(prompt("Enter the first number"));
+            let num2 = parseInt(prompt("Enter the second number"));
+            let num3 = parseInt(prompt("Enter the third number"));
+
+            let sum = num1 + num2 + num3;
+            let product = num1 * num2 * num3;
+            let average = sum / 3;
+
+            document.write("Sum: " + sum + "<br>");
+            document.write("Product: " + product + "<br>");
+            document.write("Average: " + average);
+        </script>
+    </div>
+</body>
+</html>

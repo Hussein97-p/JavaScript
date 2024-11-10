@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number Checker</title>
+    <style>
+        body {
+            background-color: silver;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid black;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <script>
+            let num = parseInt(prompt("Enter an integer"));
+
+            if (num < 2) {
+                document.write(num + " is not a prime number.");
+            } else {
+                let isPrime = true;
+
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+                if (isPrime) {
+                    document.write(num + " is a prime number.");
+                } else {
+                    document.write(num + " is not a prime number.");
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

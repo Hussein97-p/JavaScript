@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Probability</title>
+    <style>
+        body {
+            background-color: silver;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid black;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <script>
+            let numDice = parseInt(prompt("Enter the number of dice"));
+            let targetSum = parseInt(prompt("Enter the target sum"));
+            let simulations = 10000;
+            let successfulRolls = 0;
+
+            for (let i = 0; i < simulations; i++) {
+                let sum = 0;
+                for (let j = 0; j < numDice; j++) {
+                    sum += Math.floor(Math.random() * 6) + 1;
+                }
+                if (sum === targetSum) {
+                    successfulRolls++;
+                }
+            }
+
+            let probability = (successfulRolls / simulations) * 100;
+            document.write("Probability to get sum " + targetSum + " with " + numDice + " dice is " + probability.toFixed(2) + "%");
+        </script>
+    </div>
+</body>
+</html>

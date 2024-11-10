@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Root Calculator</title>
+    <style>
+        body {
+            background-color: silver;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid black;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <script>
+            if (confirm("Should I calculate the square root?")) {
+                let number = parseFloat(prompt("Enter a number"));
+                
+                if (number < 0) {
+                    document.write("The square root of a negative number is not defined.");
+                } else {
+                    let sqrt = Math.sqrt(number);
+                    document.write("The square root is: " + sqrt);
+                }
+            } else {
+                document.write("The square root is not calculated.");
+            }
+        </script>
+    </div>
+</body>
+</html>
