@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participants List</title>
+    <style>
+        body {
+            background-color: rgb(78, 78, 245);
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            border: 2px solid black;
+            background-color: silver;
+            padding: 20px;
+            text-align: center;
+        }
+        ol {
+            color: rgb(32, 77, 255);
+            border: 2px solid;
+            background-color: whitesmoke;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Participants List</h2>
+        <ol id="this_list-list"></ol>
+    </div>
+
+    <script>
+        let this_list = [];
+        let num_of_participants = prompt("Enter the number of Participants:");
+
+        for (let i = 0; i < num_of_participants; i++) {
+            let name = prompt("Enter participant name " + (i + 1) + ":");
+            this_list.push(name);
+        }
+
+        this_list.sort();
+
+        let list = document.getElementById("this_list-list");
+
+        for (let i = 0; i < this_list.length; i++) {
+            let listItem = document.createElement("li");
+            listItem.textContent = this_list[i];
+            list.appendChild(listItem);
+            
+        }
+    </script>
+</body>
+</html>

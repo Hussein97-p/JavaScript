@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Name's List</title>
+    <style>
+        body {
+            background-color: rgb(78, 78, 245);
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            border: 2px solid black;
+            background-color: silver;
+            padding: 20px;
+            text-align: center;
+        }
+        ul {
+            color: rgb(32, 77, 255);
+            list-style-type: none;
+            padding-left: 0;
+            background-color: rgb(255, 255, 255);
+            border: 2px solid black;
+        }
+        li {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        h2{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Dog Name's</h2>
+        <ul id="dog-list"></ul>
+    </div>
+
+    <script>
+        let dog_Names = [];
+        
+        for (let i = 0; i < 6; i++) {
+            let name = prompt("Enter The dog name " + (i + 1) + ":");
+            dog_Names.push(name);
+        }
+
+
+        dog_Names.sort().reverse();
+
+        let list = document.getElementById("dog-list");
+
+        for (let i = 0; i < dog_Names.length; i++) {
+            let listItem = document.createElement("li");
+            listItem.textContent = dog_Names[i];
+            list.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>
