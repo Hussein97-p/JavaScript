@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers from Largest to Smallest</title>
+    <style>
+        body {
+            background-color: rgb(78, 78, 245);
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            border: 2px solid black;
+            background-color: silver;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Numbers from Largest to Smallest</h2>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        let numbers = [];
+        let num;
+
+        do {
+            num = parseInt(prompt("Enter a number (press  0 to END The Program ): "), 10);
+            if (num !== 0) {
+                numbers.push(num);
+            }
+        } while (num !== 0);
+
+        numbers.sort((a, b) => b - a);
+
+        let result = "Numbers: " + numbers.join(", ") + " Thank you ";
+        document.getElementById("output").innerText = result;
+        console.log(result);
+    </script>
+</body>
+</html>
+

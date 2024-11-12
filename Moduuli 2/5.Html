@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers Entered</title>
+    <style>
+        body {
+            background-color: rgb(78, 78, 245);
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            border: 2px solid black;
+            background-color: silver;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 align="center">Numbers Entered</h2>
+    <div id="container">
+        <div id="output"></div>
+    </div>
+    
+    <script>
+        let numbers = [];
+        let num;
+
+        while (true) {
+            num = parseInt(prompt("Enter a number:"), 10);
+            if (numbers.indexOf(num) !== -1) {
+                alert("The number has already been given! Stopping the program.");
+                break;
+            }
+            numbers.push(num);
+        }
+
+        numbers.sort((a, b) => a - b);
+        let result = "All entered numbers in ascending order are: " + numbers.join(", ") + " Thank you";
+
+        document.getElementById("output").innerText = result;
+        console.log(result);
+    </script>
+</body>
+</html>
