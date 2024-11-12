@@ -21,7 +21,7 @@
     <div class="container">
         <script>
             let year = parseInt(prompt("Enter a year"));
-            let isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+            let isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 100 === 0 && year  % 400 === 0 );
 
             if (isLeap) {
                 document.write(year + " is a leap year.");
