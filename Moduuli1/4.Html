@@ -20,21 +20,22 @@
 <body>
     <div class="container">
         <script>
-            let name = prompt("What is your name?");
-            let house = Math.floor(Math.random() * 4) + 1;  // Random number between 1 and 4
+const  name = prompt("What is your name?");
+let x = Math.floor(Math.random() * 4) + 1;  // Random number between 1 and 4 as i Think // 
 
-            let result;
-            if (house === 1) {
-                result = name + ", you are Gryffindor.";
-            } else if (house === 2) {
-                result = name + ", you are Slytherin.";
-            } else if (house === 3) {
-                result = name + ", you are Hufflepuff.";
-            } else {
-                result = name + ", you are Ravenclaw.";
-            }
+let result;
+if (x === 1) {
+    result = name + ", you are Gryffindor.";
+} else if (x === 2) {
+    result = name + ", you are Slytherin.";
+} else if (x === 3) {
+    result = name + ", you are Hufflepuff.";
+} else {
+    result = name + ", you are Ravenclaw.";
+}
 
-            document.write(result);
+document.write(result);
+
         </script>
     </div>
 </body>
