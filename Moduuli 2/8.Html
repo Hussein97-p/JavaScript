@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concatenate Strings</title>
+    <style>
+        body {
+            background-color: rgb(78, 78, 245);
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            border: 2px solid black;
+            background-color: silver;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h2>Concatenated String Result</h2>
+    <p id="result"></p>
+    </div>
+    <script>
+        function concat(arr) {
+            var result = "";
+            for (var i = 0; i < arr.length; i++) {
+                result += arr[i];
+            }
+            return result;
+        }
+
+        var array = ["Johnny", "DeeDee", "Joey", "Marky"];
+        var concatenatedString = concat(array);
+        document.getElementById("result").textContent = "Concatenated Result: " + concatenatedString;
+    </script>
+</body>
+</html>

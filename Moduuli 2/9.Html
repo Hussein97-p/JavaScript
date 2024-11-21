@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even Numbers</title>
+    <style>
+        body {
+            background-color: rgb(78, 78, 245);
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            border: 2px solid black;
+            background-color: silver;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Even Numbers Array</h2>
+        <p id="originalArray"></p>
+        <p id="evenArray"></p>
+    </div>
+    
+    <script>
+        function even(arr) {
+            var evenArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0) {
+                    evenArr.push(arr[i]);
+                }
+            }
+            return evenArr;
+        }
+
+        var originalArray = [2, 7, 4, 5, 10, 13, 8];
+        var evenNumbers = even(originalArray);
+
+        console.log("Original Array: ", originalArray);
+        console.log("Even Numbers: ", evenNumbers);
+
+        document.getElementById("originalArray").textContent = "Original Array: " + originalArray;
+        document.getElementById("evenArray").textContent = "Even Numbers: " + evenNumbers;
+    </script>
+</body>
+</html>

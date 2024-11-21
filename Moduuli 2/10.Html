@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Program</title>
+    <style>
+        body {
+            background-color: rgb(78, 78, 245);
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            border: 2px solid black;
+            background-color: silver;
+            padding: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Voting System</h2>
+        <div id="result"></div>
+    </div>
+    <script>
+        function startVoting() {
+            let candidates = [];
+            let numOfCandidates = parseInt(prompt("Enter the number of candidates:"));
+
+            for (let i = 1; i <= numOfCandidates; i++) {
+                let candidateName = prompt(`Enter the name for candidate ${i}:`);
+                candidates.push({ name: candidateName, votes: 0 });
+            }
+
+            let numOfVoters = parseInt(prompt("Enter the number of voters:"));
+
+            for (let i = 0; i < numOfVoters; i++) {
+                let vote = prompt(`Voter ${i + 1}, enter your vote (or leave empty for no vote):`);
+                if (vote) {
+                    let candidate = candidates.find(candidate => candidate.name.toLowerCase() === vote.toLowerCase());
+                    if (candidate) {
+                        candidate.votes++;
+                    }
+                }
+            }
+
+            candidates.sort((a, b) => b.votes - a.votes);
+            let winner = candidates[0];
+
+            let resultHTML = `The winner is <strong>${winner.name}</strong> with <strong>${winner.votes}</strong> votes.<br><br>`;
+            resultHTML += "Results:<br>";
+            candidates.forEach(candidate => {
+                resultHTML += `${candidate.name}: ${candidate.votes} votes<br>`;
+            });
+
+            document.getElementById("result").innerHTML = resultHTML;
+
+            console.log(`The winner is ${winner.name} with ${winner.votes} votes.`);
+            console.log("Results:");
+            candidates.forEach(candidate => {
+                console.log(`${candidate.name}: ${candidate.votes} votes`);
+            });
+
+            alert("The result has been printed in the console as well.");
+        }
+
+        startVoting();
+    </script>
+</body>
+</html>

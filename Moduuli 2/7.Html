@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roll</title>
+    <style>
+        body {
+            background-color: rgb(78, 78, 245);
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            border: 2px solid black;
+            background-color: silver;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h2>Dice Roll Until Max Value</h2>
+    <ul id="rollResults"></ul>
+    </div>
+    <script>
+        function rollDice(sides) {
+            return Math.floor(Math.random() * sides) + 1;
+        }
+
+        const sides = parseInt(prompt("Enter the number of sides on the dice:"), 10);
+        
+        let roll;
+        do {
+            roll = rollDice(sides);
+            let li = document.createElement('li');
+            li.textContent = `You rolled: ${roll}`;
+            document.getElementById("rollResults").appendChild(li);
+            console.log(roll);
+        } while (roll !== sides);
+    </script>
+</body>
+</html>
