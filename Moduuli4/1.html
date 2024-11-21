@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TV ShOw</title>
+<style>
+    body{
+        background-color: rgb(255, 55, 105);
+    }
+    h1{
+    color: rgb(26, 93, 210);
+    text-align: center;
+    }
+    #form1{
+    margin-top: 10%;
+    border: 2px solid black;
+    width: 40%;
+    height: 20%;
+    background-color: whitesmoke;
+    margin-left: 30%;
+    }
+    #searchForm{
+        margin-left: 35%;
+        margin-bottom: 10%;
+    }
+    .button{
+        margin-left: 15%;
+        transition: 1s;
+
+    }
+
+</style>
+</head>
+<body>
+<div id="form1">
+<h1>Looking For TV series??</h1>
+<hr>
+<hr>
+<form id="searchForm">
+    <input id="query" type="text" placeholder="Seties Name?" required>
+    <br>
+    <br>
+    <button class="button" type="submit">Search</button>
+</form>
+</div>
+<script>
+
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const query = document.getElementById('query').value;
+    fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
+        .then(function(response) {
+        return response.json(); 
+        })
+        .then(function(data) {
+        console.log(data);
+        })
+        .catch(function(error) {
+        console.error('warning//Erorr', error);
+        });
+    });
+</script>
+</body>
+</html>

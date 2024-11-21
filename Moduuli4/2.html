@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Searching For TV Show ?? </title>
+  <style>
+    body {
+        background-color: rgb(255, 55, 105);
+    }
+    #Form {
+        background-color: whitesmoke;
+        width: 45%;
+        height: 35%;
+        border: 2px solid black;
+        margin-left: 28%;
+        margin-top: 10%;
+    }
+    h1 {
+        text-align: center;
+        color: rgb(235, 153, 31);
+    }
+    #query {
+        margin-left: 38%;
+        border: 1px solid black;
+    }
+    .button {
+        margin-left: 45%;
+    }
+    span {
+        color: blue;
+    }
+  </style>
+</head>
+<body>
+<form id="Form">
+  <h1>Check Here your <span>TV</span> Show!!</h1>
+  <hr>
+  <hr>
+  <br>
+  <input id="query" type="text" placeholder="Enter show name" required>
+  <br>
+  <br>
+  <br>
+  <button class="button" type="submit">Search</button>
+  <br>
+  <br>
+  <br>
+</form>
+
+<script>
+  document.getElementById('Form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const query = document.getElementById('query').value;
+
+    fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  });
+</script>
+</body>
+</html>
