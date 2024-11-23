@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuck Norris Joke Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:  rgb(255, 55, 105);
+      text-align: center;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .joke {
+      background-color: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chuck Norris Joke Search</h1>
+
+  <input type="text" id="searchTerm" placeholder="Enter a search term for a joke">
+  <button id="searchButton">Search for Joke</button>
+
+  <div id="results"></div>
+
+  <script>
+    document.getElementById('searchButton').addEventListener('click', function() {
+      const searchTerm = document.getElementById('searchTerm').value;
+
+      if (!searchTerm) {
+        alert('Please enter a search term!');
+        return;
+      }
+
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+
+      fetch(`https://api.chucknorris.io/jokes/search?query=${searchTerm}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.result.length === 0) {
+            resultsDiv.innerHTML = 'No jokes found with this term.';
+            return;
+  }
+
+        data.result.forEach(joke => {
+            const jokeElement = document.createElement('div');
+            jokeElement.className = 'joke';
+            jokeElement.textContent = joke.value;
+            resultsDiv.appendChild(jokeElement);          });
+        })
+        .catch(error => {
+      console.error('Error loading jokes:', error);
+        resultsDiv.innerHTML = 'An error occurred, please try again later.';
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Searching For TV Show?</title>
+  <style>
+    body {
+        background-color: rgb(255, 55, 105);
+    }
+    #Form {
+        background-color: whitesmoke;
+        width: 45%;
+        height: 35%;
+        border: 2px solid black;
+        margin-left: 28%;
+        margin-top: 5%;
+        padding: 10px;
+    }
+    h1 {
+        text-align: center;
+        color: rgb(235, 153, 31);
+    }
+    #query {
+        margin-left: 38%;
+        border: 1px solid black;
+    }
+    .button {
+        margin-left: 45%;
+    }
+    #results {
+        margin-top: 20px;
+        padding: 10px;
+    }
+    article {
+        border: 1px solid #000;
+        background-color: #fff;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    article img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    h2 {
+        color: rgb(26, 93, 210);
+    }
+  </style>
+</head>
+<body>
+  <form id="Form">
+    <h1>Check Here your <span>TV</span> Show!!</h1>
+    <hr>
+    <hr>
+    <br>
+    <input id="query" type="text" placeholder="Enter show name" required>
+    <br>
+    <br>
+    <br>
+    <button class="button" type="submit">Search</button>
+    <br>
+    <br>
+    <br>
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    document.getElementById('Form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const query = document.getElementById('query').value;
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = ''; // Clear old results
+
+      fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length === 0) {
+            resultsDiv.innerHTML = '<p>No results found.</p>';
+            return;
+          }
+          data.forEach(tvShow => {
+            const show = tvShow.show;
+
+            const article = document.createElement('article');
+            
+            const title = document.createElement('h2');
+            title.textContent = show.name;
+
+            const link = document.createElement('a');
+            link.href = show.url;
+            link.textContent = "Details";
+            link.target = "_blank";
+
+            const image = document.createElement('img');
+            image.src = show.image?.medium || 'https://via.placeholder.com/210x295?text=No+Image';
+            image.alt = show.name;
+
+            const summaryDiv = document.createElement('div');
+            summaryDiv.innerHTML = show.summary || 'No summary available';
+
+            article.appendChild(title);
+            article.appendChild(link);
+            article.appendChild(image);
+            article.appendChild(summaryDiv);
+
+            resultsDiv.appendChild(article);
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          resultsDiv.innerHTML = '<p>There was an error fetching the data. Please try again later.</p>';
+        });
+    });
+  </script>
+</body>
+</html>
